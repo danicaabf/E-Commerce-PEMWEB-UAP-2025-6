@@ -18,7 +18,7 @@
         <div class="min-h-screen flex justify-center items-center bg-gray-100">
             <div>
                 <a href="/">
-                    <img src="/images/Logo.png" class="w-32 mx-auto" alt="">
+                    <img src="/images/Logo.png" class="w-32 mx-auto" alt="logo">
                 </a>
             </div>
 
