@@ -10,36 +10,50 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// =============== DASHBOARD PER ROLE ===============
+Route::middleware(['auth', 'verified'])->group(function () {
+    
+    // dashboard default member
+    Route::get('/dashboard', function () {
+        return view('member.dashboard');
+    })->name('dashboard')->middleware('role:member');
 
-// ================= PROFILE CONTROLLER =================
+    // dashboard admin
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->middleware('role:admin')->name('admin.dashboard');
+
+    // dashboard seller
+    Route::get('/seller/dashboard', function () {
+        return view('seller.dashboard');
+    })->middleware('role:seller')->name('seller.dashboard');
+});
+
+
+// =============== PROFILE (global) ===============
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// ================= SELLER CONTROLLER =================
-Route::prefix('seller')->name('seller.')->middleware(['auth', 'role:seller'])->group(function () {
-    Route::get('profile', [SellerController::class, 'edit'])->name('edit');
-    Route::put('profile', [SellerController::class, 'update'])->name('update');
-    Route::delete('profile', [SellerController::class, 'destroy'])->name('destroy');
+
+// =============== ADMIN CONTROLLER ===============
+Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
+    Route::get('profile', [AdminController::class, 'edit'])->name('admin.profile.edit');
 });
 
-// ================= ADMIN CONTROLLER =================
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('profile', [AdminController::class, 'edit'])->name('edit');
-    Route::put('profile', [AdminController::class, 'update'])->name('update');
-    Route::delete('profile', [AdminController::class, 'destroy'])->name('destroy');
+
+// =============== SELLER CONTROLLER ===============
+Route::prefix('seller')->middleware(['auth','role:seller'])->group(function () {
+    Route::get('profile', [SellerController::class, 'edit'])->name('seller.profile.edit');
 });
 
-// ================= MEMBER CONTROLLER =================
-Route::prefix('member')->name('member.')->middleware(['auth', 'role:member'])->group(function () {
-    Route::get('profile', [MemberController::class, 'edit'])->name('edit');
-    Route::put('profile', [MemberController::class, 'update'])->name('update');
-    Route::delete('profile', [MemberController::class, 'destroy'])->name('destroy');
+
+// =============== MEMBER CONTROLLER ===============
+Route::prefix('member')->middleware(['auth','role:member'])->group(function () {
+    Route::get('profile', [MemberController::class, 'edit'])->name('member.profile.edit');
 });
+
 
 require __DIR__.'/auth.php';
