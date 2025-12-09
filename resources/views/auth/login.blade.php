@@ -6,7 +6,7 @@
 
         <!-- LOGO -->
         <div class="flex justify-center mb-8">
-            <img src="{{ asset('imagesource/urbanshoes.png') }}" class="w-32 mix-blend-multiply" alt="UrbanShoes Logo">
+            <img src="{{ asset('imagesource/urbanshoes.png') }}" class="w-32 mix-blend-multiply" alt="UrbanShoesLogo">
         </div>
 
         @if(session('status'))
