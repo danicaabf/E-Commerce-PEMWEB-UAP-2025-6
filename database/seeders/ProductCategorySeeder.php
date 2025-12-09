@@ -41,10 +41,20 @@ class ProductCategorySeeder extends Seeder
                 'image' => 'running-shoes.png',
                 'description' => 'Kategori sepatu khusus lari dan olahraga, ringan dan nyaman dipakai.',
             ],
+            [
+                'name' => 'Boots',
+                'slug' => 'boots',
+                'tagline' => 'Sepatu boots stylish & tangguh',
+                'image' => 'boots.png',
+                'description' => 'Kategori sepatu boots untuk gaya casual maupun kegiatan outdoor, tahan lama dan nyaman dipakai.',
+            ],
         ];
 
         foreach ($categories as $category) {
-            ProductCategory::create($category);
+            ProductCategory::firstOrCreate(
+                ['slug' => $category['slug']], // cek berdasarkan slug
+                $category
+            );
         }
     }
 }
