@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href={{asset(style.css)}}>
-</head>
-<body>
-    <h1>Admin</h1>
-</body>
-</html>
+@extends('layouts.main')
+
+@section('content')
+<div class="container py-5">
+    <h2>Admin Dashboard 👑</h2>
+    <ul>
+        <li><a href="/admin/verification">Verifikasi Toko</a></li>
+        <li><a href="/admin/users">Management User & Store</a></li>
+    </ul>
+</div>
+@endsection
