@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Member Dashboard</h1>
-</body>
-</html>
+@extends('layouts.main')
+
+@section('content')
+<div class="container py-5">
+    <h2>Member Dashboard 👤</h2>
+
+    <ul>
+        <li><a href="/history">Riwayat Belanja</a></li>
+        <li><a href="/wallet/topup">Topup Saldo</a></li>
+    </ul>
+</div>
+@endsection

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\AdminController;
@@ -18,8 +19,9 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
 
     // Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->name('dashboard');
+    Route::get('/dashboard', function () { return view('dashboard');})
+    ->name('dashboard');
+
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])
@@ -30,11 +32,12 @@ Route::middleware(['auth'])->group(function () {
         ->name('profile.destroy');
 
     // Store
-    Route::get('/store', [StoreController::class, 'index'])
-        ->name('store.index');
-    Route::get('/store/{id}', [StoreController::class, 'show'])
-        ->name('store.show');
-
+     Route::get('/store', [StoreController::class, 'index'])->name('store.index');
+     Route::get('/store/{id}', [StoreController::class, 'show'])->name('store.show');
+     
+    // Checkout ───────────────
+     Route::get('/checkout/{id}', [CheckoutController::class, 'index'])->name('checkout.index');
+     
     // Category
     Route::get('/categories', [CategoryController::class, 'index'])
         ->name('categories.index');
@@ -45,23 +48,29 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders', [OrdersController::class, 'index'])
         ->name('orders.index');
     Route::get('/orders/{id}', [OrdersController::class, 'show'])
-        ->name('orders.show');
-});
+        ->name('orders.show');});
 
-// ================= ROLE =================
-Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
-    Route::get('/profile', [AdminController::class, 'edit'])
-        ->name('admin.profile.edit');
-});
+       // ================= ROLE =================
 
-Route::prefix('seller')->middleware(['auth','role:seller'])->group(function () {
-    Route::get('/profile', [SellerController::class, 'edit'])
-        ->name('seller.profile.edit');
-});
+        // ADMIN ONLY
+        Route::middleware(['auth', 'role:admin'])->group(function () {
+            Route::get('/admin/dashboard', function () {
+                return view('admin.dashboard');
+            })->name('admin.dashboard');
+        });
 
-Route::prefix('member')->middleware(['auth','role:member'])->group(function () {
-    Route::get('/profile', [MemberController::class, 'edit'])
-        ->name('member.profile.edit');
-});
+        // SELLER ONLY
+        Route::middleware(['auth', 'role:seller'])->group(function () {
+            Route::get('/seller/dashboard', function () {
+                return view('seller.dashboard');
+            })->name('seller.dashboard');
+        });
+
+        // MEMBER ONLY
+        Route::middleware(['auth', 'role:member'])->group(function () {
+            Route::get('/member/dashboard', function () {
+                return view('member.dashboard');
+            })->name('member.dashboard');
+        });
 
 require __DIR__.'/auth.php';
