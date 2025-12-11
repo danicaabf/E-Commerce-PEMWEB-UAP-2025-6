@@ -6,7 +6,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrdersController;
-
+ 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\VerifyStoreController;
 use App\Http\Controllers\Admin\UserStoreController;
