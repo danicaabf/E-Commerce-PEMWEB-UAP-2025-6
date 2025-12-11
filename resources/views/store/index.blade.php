@@ -6,7 +6,7 @@
 
     {{-- title --}}
     <h1 class="text-center text-4xl font-black mb-12 text-[#FF6500] tracking-widest">
-        URBAN SHOES STORE
+        ALL STORE
     </h1>
 
     {{-- grid --}}
