@@ -23,6 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'saldo', 
     ];
 
     /**
@@ -45,6 +46,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'saldo' => 'integer',   // 
         ];
     }
 
@@ -64,7 +66,8 @@ class User extends Authenticatable
     {
         return $this->store()->exists() && $this->store->is_verified;
     }
-    // relationships can hava one store 
+
+    // relationships can have one store 
     public function store()
     {
         return $this->hasOne(Store::class);

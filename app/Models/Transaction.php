@@ -29,21 +29,27 @@ class Transaction extends Model
         'grand_total' => 'decimal:2',
     ];
 
+    // BUYER
     public function buyer()
     {
-        return $this->belongsTo(Buyer::class);
-    }
-    public function store()
-    {
-        return $this->belongsTo(Store::class);
+        return $this->belongsTo(\App\Models\User::class, 'buyer_id');
     }
 
+    // STORE
+    public function store()
+    {
+        return $this->belongsTo(\App\Models\Store::class, 'store_id');
+    }
+
+    // DETAIL TRANSAKSI
     public function transactionDetails()
     {
-        return $this->hasMany(TransactionDetail::class);
+        return $this->hasMany(\App\Models\TransactionDetail::class);
     }
+
+    // REVIEW PRODUK
     public function productReviews()
     {
-        return $this->hasMany(ProductReview::class);
+        return $this->hasMany(\App\Models\ProductReview::class);
     }
 }

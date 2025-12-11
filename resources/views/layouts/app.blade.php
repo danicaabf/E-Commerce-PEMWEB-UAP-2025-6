@@ -43,6 +43,17 @@
                         <a href="{{ route('dashboard') }}" class="hover:underline">Dashboard</a>
                         <a href="{{ route('store.index') }}" class="hover:underline">Store</a>
                         <a href="{{ route('categories.index') }}" class="hover:underline">Category</a>
+
+                        {{-- Riwayat Transaksi (History) --}}
+                        <a href="{{ route('member.transactions') }}" class="hover:underline">Riwayat Transaksi</a>
+
+                        {{-- Wallet (saldo) --}}
+                        <a href="{{ route('wallet.index') }}" class="hover:underline">Wallet</a>
+
+                        {{-- Topup Saldo --}}
+                        <a href="{{ route('topup.index') }}" class="hover:underline">TopUp</a>
+
+                        {{-- Orders (existing) --}}
                         <a href="{{ route('orders.index') }}" class="hover:underline">Orders</a>
                     @endif
 

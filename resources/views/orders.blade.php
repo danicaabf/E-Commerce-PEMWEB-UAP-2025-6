@@ -24,7 +24,7 @@
                         <td class="py-3 px-6">{{ $order->id }}</td>
                         <td class="py-3 px-6">{{ $order->product->name ?? 'Produk tidak tersedia' }}</td>
                         <td class="py-3 px-6">{{ $order->quantity }}</td>
-                        <td class="py-3 px-6">${{ number_format($order->total_price, 2) }}</td>
+                        <td class="py-3 px-6">Rp{{ number_format($order->total_price, 0, ',', '.') }}</td>
                         <td class="py-3 px-6">{{ ucfirst($order->status) }}</td>
                     </tr>
                     @endforeach

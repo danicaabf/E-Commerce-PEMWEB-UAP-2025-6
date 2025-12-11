@@ -8,20 +8,18 @@ use App\Models\User;
 
 class StoreSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Ambil user pertama dengan role 'member' sebagai owner store
         $user = User::where('role', 'member')->first();
 
         if ($user) {
+
+            // ===== STORE 1 =====
             Store::create([
                 'user_id' => $user->id,
                 'name' => 'UrbanShoes',
-                'logo' => 'urban-shoes-logo.png', 
-                'about' => 'UrbanShoes adalah toko sepatu modern yang menyediakan berbagai jenis sepatu untuk semua kalangan.',
+                'logo' => 'store1.png',
+                'about' => 'UrbanShoes adalah toko sepatu modern.',
                 'phone' => '081234567890',
                 'address_id' => 'ID-STORE-001',
                 'city' => 'Malang',
@@ -29,8 +27,23 @@ class StoreSeeder extends Seeder
                 'postal_code' => '65145',
                 'is_verified' => true,
             ]);
+
+            // ===== STORE 2 =====
+            Store::create([
+                'user_id' => $user->id, 
+                'name' => 'Sneaker',
+                'logo' => 'store2.png',
+                'about' => 'Sneaker menyediakan koleksi sepatu terbaru.',
+                'phone' => '089876543210',
+                'address_id' => 'ID-STORE-002',
+                'city' => 'Surabaya',
+                'address' => 'Jl. Ahmad Yani No. 10, Surabaya',
+                'postal_code' => '60231',
+                'is_verified' => true,
+            ]);
+
         } else {
-            $this->command->info('Tidak ada user dengan role member. Tambahkan user terlebih dahulu!');
+            $this->command->info('Tidak ada user dengan role member!');
         }
     }
 }

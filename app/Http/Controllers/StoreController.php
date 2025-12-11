@@ -3,20 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Store;
 use App\Models\Product;
 
 class StoreController extends Controller
 {
+    // =============== LIST SEMUA STORE ===============
     public function index()
     {
-        $products = Product::with(['productImages', 'productCategory', 'store'])->get();
-        return view('store.index', compact('products'));
+        $stores = Store::all();
+
+        return view('store.index', compact('stores'));
     }
 
+    // =============== DETAIL STORE + PRODUK ===============
     public function show($id)
     {
-        $product = Product::with(['productImages','productCategory','store'])->findOrFail($id);
+        $store = Store::findOrFail($id);
 
-        return view('store.show', compact('product'));
+        $products = Product::where('store_id', $id)
+            ->with(['productImages'])
+            ->get();
+
+        return view('store.show', compact('store', 'products'));
     }
 }

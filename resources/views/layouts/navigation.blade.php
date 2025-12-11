@@ -33,9 +33,28 @@
 
                 {{-- ⭐ MEMBER ONLY --}}
                 @if(Auth::user()->role == 'member')
-                    <x-nav-link href="/member/history">History</x-nav-link>
-                    <x-nav-link href="/member/wallet">Wallet</x-nav-link>
-                    <x-nav-link href="/member/topup">TopUp</x-nav-link>
+
+                    {{-- Checkout --}}
+                    <x-nav-link :href="route('checkout.index', ['id' => 1])">
+                        Checkout
+                    </x-nav-link>
+
+                    {{-- Riwayat Transaksi --}}
+                    <x-nav-link href="{{ route('transactions.history') }}">
+                        Riwayat Transaksi
+                    </x-nav-link>
+
+                    {{-- Wallet / Saldo --}}
+                    <x-nav-link href="/member/wallet">
+                        Wallet
+                    </x-nav-link>
+
+                    {{-- Topup Saldo --}}
+                    <x-nav-link :href="route('topup.index')" 
+                                :active="request()->routeIs('topup.index')">
+                        TopUp Saldo
+                    </x-nav-link>
+
                 @endif
 
                 @endauth

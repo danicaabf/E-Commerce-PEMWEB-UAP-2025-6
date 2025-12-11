@@ -13,6 +13,9 @@ use App\Http\Controllers\Admin\UserStoreController;
 
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TopupController;
 
 
 // ================= HOME PUBLIC =================
@@ -25,18 +28,20 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
 
     // DASHBOARD UNTUK MEMBER
-    Route::get('/dashboard', function () {
-        return view('dashboard'); // halaman member biasa
-    })->name('dashboard');
+    Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
 
     // PROFILE
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+
     // STORE
     Route::get('/store', [StoreController::class, 'index'])->name('store.index');
-    Route::get('/store/{id}', [StoreController::class, 'show'])->name('store.show');
+    Route::get('/store/{store:slug}', [StoreController::class, 'show'])->name('store.show');
+
+    //PRODUCT DETAIL
+    Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
 
     // CHECKOUT
     Route::get('/checkout/{id}', [CheckoutController::class, 'index'])->name('checkout.index');
@@ -69,6 +74,7 @@ Route::middleware(['auth', 'role:admin'])
         Route::get('/users', [UserStoreController::class, 'index'])->name('users.index');
     });
 
+
 // ================= SELLER ONLY =================
 Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::get('/seller/dashboard', function () {
@@ -76,12 +82,36 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
     })->name('seller.dashboard');
 });
 
+
 // ================= MEMBER ONLY =================
 Route::middleware(['auth', 'role:member'])->group(function () {
+
+    // DASHBOARD MEMBER
     Route::get('/member/dashboard', function () {
         return view('member.dashboard');
     })->name('member.dashboard');
+
+    // TRANSAKSI MEMBER
+    Route::get('/member/transactions', [TransactionController::class, 'index'])
+        ->name('member.transactions');
+
+    // WALLET
+    Route::get('/member/wallet', [TopupController::class, 'wallet'])
+        ->name('wallet.index');
+
+    // TOPUP (GET)
+    Route::get('/member/topup', [TopupController::class, 'index'])
+        ->name('topup.index');
+
+    // TOPUP (POST)
+    Route::post('/member/topup', [TopupController::class, 'store'])
+        ->name('topup.store');
 });
+
+    // PROSES CHECKOUT
+    Route::post('/checkout/{id}/process', [CheckoutController::class, 'process'])
+        ->middleware('auth')
+        ->name('checkout.process');
 
 
 require __DIR__.'/auth.php';
