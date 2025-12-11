@@ -10,9 +10,9 @@
 
             {{-- Gambar --}}
             <img 
-                src="{{ asset(optional($product->productImages->first())->image ?? 'imagesource/default.jpg') }}" 
-                alt="{{ $product->name }}" 
-                class="w-full h-48 object-cover rounded">
+            src="{{ asset('storage/' . (optional($product->productImages->first())->image ?? 'imagesource/default.jpg')) }}" 
+            alt="{{ $product->name }}" 
+            class="w-full h-48 object-cover rounded">
 
             {{-- Nama --}}
             <h2 class="text-xl font-semibold mt-2">
