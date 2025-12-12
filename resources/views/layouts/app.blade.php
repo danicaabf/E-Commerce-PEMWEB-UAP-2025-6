@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My E-Commerce Store</title>
+    <title>SoleMate</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -71,7 +71,7 @@
 
     {{-- Footer --}}
     <footer class="bg-gray-200 text-gray-700 p-4 text-center">
-        &copy; {{ date('Y') }} My E-Commerce Store. All rights reserved.
+        &copy; {{ date('Y') }} SoleMate. All rights reserved.
     </footer>
 
 </body>

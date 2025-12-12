@@ -19,10 +19,10 @@ use App\Http\Controllers\TopupController;
 
 use App\Http\Middleware\RoleMiddleware;
 
+use App\Http\Controllers\HomeController;
+
 // ================= HOME PUBLIC =================
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // ================= AUTH =================
 Route::middleware(['auth'])->group(function () {
