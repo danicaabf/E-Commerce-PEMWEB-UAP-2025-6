@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="max-w-4xl mx-auto mt-10 bg-white p-8 shadow-lg rounded-xl">
 
-        <h2 class="text-2xl font-bold mb-6 text-orange-600">Riwayat Transaksi</h2>
+        <h2 class="text-2xl font-bold mb-6 text-orange-600">Transaction History</h2>
 
         @if($histories->isEmpty())
             <p class="text-gray-500">Belum ada transaksi.</p>
@@ -9,8 +9,8 @@
             <table class="w-full border">
                 <thead class="bg-gray-100">
                     <tr>
-                        <th class="p-2 border">Tanggal</th>
-                        <th class="p-2 border">Produk</th>
+                        <th class="p-2 border">Date</th>
+                        <th class="p-2 border">Product</th>
                         <th class="p-2 border">Total</th>
                         <th class="p-2 border">Status</th>
                     </tr>

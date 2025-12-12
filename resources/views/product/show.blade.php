@@ -31,14 +31,14 @@
             <a href="{{ route('checkout.index', $product->id) }}">
                 <button class="mt-8 bg-orange-600 text-white px-6 py-3 rounded-lg 
                                hover:bg-orange-700 transition-all">
-                    Checkout Sekarang
+                    Checkout Now
                 </button>
             </a>
 
             <!-- KEMBALI -->
             <div class="mt-4">
                 <a href="{{ url()->previous() }}" class="text-blue-600 hover:underline">
-                    &larr; Kembali
+                    &larr; Back
                 </a>
             </div>
 

@@ -16,7 +16,7 @@
     </div>
 
     <div class="bg-white p-6 rounded-lg shadow">
-        <h2 class="text-xl font-semibold">Pengajuan Store</h2>
+        <h2 class="text-xl font-semibold">Store Submission</h2>
         <p class="text-4xl font-bold text-orange-600">{{ $pendingStores }}</p>
     </div>
 </div>

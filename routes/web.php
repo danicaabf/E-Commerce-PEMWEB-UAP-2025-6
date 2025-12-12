@@ -69,14 +69,14 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // ================= ADMIN ONLY =================
-    Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
 
         Route::get('/home', [AdminController::class, 'index'])->name('home');
 
         // VERIFIKASI TOKO
-        Route::get('/verification', [VerifyStoreController::class, 'index'])->name('verify.index');
-        Route::post('/verification/{store}/approve', [VerifyStoreController::class, 'approve'])->name('verify.approve');
-        Route::post('/verification/{store}/reject', [VerifyStoreController::class, 'reject'])->name('verify.reject');
+        Route::get('/stores', [VerifyStoreController::class, 'index'])->name('stores.index');
+        Route::post('/stores/{store}/verify', [VerifyStoreController::class, 'verify'])->name('stores.verify');
+        Route::post('/stores/{store}/reject', [VerifyStoreController::class, 'reject'])->name('stores.reject');
 
         // USER & STORE MANAGEMENT
         Route::get('/users', [UserStoreController::class, 'index'])->name('users.index');

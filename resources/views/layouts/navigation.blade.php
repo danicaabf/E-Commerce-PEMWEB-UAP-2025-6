@@ -4,7 +4,7 @@
 
             {{-- BRAND --}}
             <div class="flex items-center">
-                <a href="/" class="text-orange-600 text-lg font-bold">E-Commerce</a>
+                <a href="/" class="text-orange-600 text-lg font-bold">SoleMate</a>
             </div>
 
             
@@ -41,7 +41,7 @@
 
                     {{-- Riwayat Transaksi --}}
                     <x-nav-link href="{{ route('transactions.history') }}">
-                        Riwayat Transaksi
+                        Transaction History
                     </x-nav-link>
 
                     {{-- Wallet / Saldo --}}
@@ -52,14 +52,13 @@
                     {{-- Topup Saldo --}}
                     <x-nav-link :href="route('topup.index')" 
                                 :active="request()->routeIs('topup.index')">
-                        TopUp Saldo
+                        TopUp Ballance
                     </x-nav-link>
 
                 @endif
 
                 @endauth
             </div>
-
 
 
             {{-- RIGHT AREA --}}

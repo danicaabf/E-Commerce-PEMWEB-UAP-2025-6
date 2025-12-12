@@ -12,7 +12,7 @@
         </p>
     </div>
 
-    <h2 class="text-2xl font-bold mb-6 text-orange-600">Top Up Saldo</h2>
+    <h2 class="text-2xl font-bold mb-6 text-orange-600">Top Up Ballance</h2>
 
     {{-- Pesan sukses --}}
     @if(session('success'))
@@ -32,24 +32,24 @@
         @csrf
 
         <div class="mb-4">
-            <label class="block mb-1 font-semibold">Jumlah Top Up</label>
+            <label class="block mb-1 font-semibold">Top Up Amount</label>
             <input type="number" name="amount" class="w-full border p-2 rounded"
                    placeholder="Masukkan nominal" required>
         </div>
 
         {{-- METODE PEMBAYARAN --}}
         <div class="mb-4">
-            <label class="block mb-1 font-semibold">Metode Pembayaran</label>
+            <label class="block mb-1 font-semibold">Payment Method</label>
             <select name="method" class="w-full border p-2 rounded" required>
-                <option value="">-- Pilih Metode --</option>
+                <option value="">-- Choose Method --</option>
                 <option value="ewallet">E-Wallet (DANA/OVO/ShopeePay)</option>
                 <option value="va">Virtual Account</option>
-                <option value="bank">Transfer Bank</option>
+                <option value="bank">Bank Transfer</option>
             </select>
         </div>
 
         <button class="bg-orange-600 text-white px-5 py-2 rounded hover:bg-orange-700">
-            Top Up Sekarang
+            Top Up Now
         </button>
 
     </form>

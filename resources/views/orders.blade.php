@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6 text-orange-600">Pesanan Saya</h1>
+    <h1 class="text-3xl font-bold mb-6 text-orange-600">My Order</h1>
     
     @if($orders->isEmpty())
         <p class="text-gray-700">Belum ada pesanan.</p>

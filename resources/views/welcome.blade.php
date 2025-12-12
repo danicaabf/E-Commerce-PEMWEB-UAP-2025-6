@@ -10,13 +10,13 @@
 
                 <div class="flex items-center gap-6">
                     <a href="/" class="flex items-center gap-3">
-                        <span class="font-bold text-xl text-orange-500">Solemate</span>
+                        <span class="font-bold text-xl text-orange-500">SoleMate</span>
                     </a>
 
                     {{-- MEGA MENU --}}
                     <nav class="hidden lg:flex items-center gap-4">
                         <div class="relative group">
-                            <button class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">Kategori</button>
+                            <button class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">Category</button>
 
                             <div class="absolute left-0 top-full mt-3 w-screen max-w-4xl transform scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all origin-top-left bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 ring-1 ring-black/5 z-50">
                                 <div class="grid grid-cols-3 gap-6">
@@ -50,8 +50,8 @@
                             </div>
                         </div>
 
-                        <a href="{{ route('login') }}" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">Produk</a>
-                        <a href="{{ route('login') }}" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">Jual</a>
+                        <a href="{{ route('login') }}" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">Product</a>
+                        <a href="{{ route('login') }}" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">Sell</a>
                     </nav>
                 </div>
 
@@ -85,11 +85,11 @@
                         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8">
                             <div class="flex-1">
                                 <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
-                                    Langkah Baru, <span class="text-orange-400">Solemate</span> Baru
+                                    Langkah Baru, <span class="text-orange-400">SoleMate</span> Baru
                                 </h1>
                                 <p class="mt-4 text-gray-300">Koleksi eksklusif sneakers & running terbaik tahun ini.</p>
                                 <a href="{{ route('login') }}" class="mt-6 inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md">
-                                    Belanja Sekarang
+                                    Shop Now
                                 </a>
                             </div>
 
@@ -108,7 +108,7 @@
                                 <h2 class="text-3xl md:text-5xl font-bold">Diskon Musim Ini</h2>
                                 <p class="mt-3 text-gray-700">Potongan sampai 30% untuk koleksi terpilih.</p>
                                 <a href="{{ route('login') }}" class="mt-6 inline-block bg-black text-white px-6 py-3 rounded-md">
-                                    Lihat Promo
+                                    View Promo
                                 </a>
                             </div>
 
@@ -173,8 +173,8 @@
     <section class="py-16 bg-gray-50 dark:bg-gray-800">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex justify-between items-center">
-                <h2 class="text-2xl font-bold">Produk Terbaru</h2>
-                <a href="{{ route('login') }}" class="text-sm text-gray-600 dark:text-gray-300">Lihat semua</a>
+                <h2 class="text-2xl font-bold">New Product</h2>
+                <a href="{{ route('login') }}" class="text-sm text-gray-600 dark:text-gray-300">View All</a>
             </div>
 
             <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -190,7 +190,7 @@
 
                         <div class="mt-2 flex items-center justify-between">
                             <div class="font-bold">Rp {{ number_format($product->price,0,',','.') }}</div>
-                            <a href="{{ route('login') }}" class="px-3 py-1 bg-orange-500 text-white rounded">Beli</a>
+                            <a href="{{ route('login') }}" class="px-3 py-1 bg-orange-500 text-white rounded">Buy</a>
                         </div>
                     </a>
 
@@ -239,7 +239,7 @@
             <form action="/subscribe" method="POST" class="mt-4 max-w-md mx-auto flex gap-2">
                 @csrf
                 <input name="email" type="email" placeholder="Masukkan email" required class="w-full px-4 py-2 rounded-l-md text-black">
-                <button class="px-4 bg-black text-white rounded-r-md">Daftar</button>
+                <button class="px-4 bg-black text-white rounded-r-md">Register</button>
             </form>
         </div>
     </section>
@@ -249,23 +249,22 @@
     <footer class="bg-black text-white py-8 mt-6">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-                <h4 class="font-bold text-orange-400">Solemate</h4>
+                <h4 class="font-bold text-orange-400">SoleMate</h4>
                 <p class="text-sm text-gray-400 mt-2">Platform sepatu pilihanmu.</p>
             </div>
 
             <div>
-                <h5 class="font-semibold">Bantuan</h5>
+                <h5 class="font-semibold">Help</h5>
                 <ul class="mt-2 text-sm text-gray-400 space-y-1">
                     <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Hubungi kami</a></li>
+                    <li><a href="#">Contact Us</a></li>
                 </ul>
             </div>
 
             <div>
-                <h5 class="font-semibold">Ikuti kami</h5>
+                <h5 class="font-semibold">Follow Us</h5>
                 <div class="flex gap-3 mt-2">
                     <a href="#" class="text-orange-400">Instagram</a>
-                    <a href="#" class="text-orange-400">Tokopedia</a>
                 </div>
             </div>
         </div>

@@ -5,8 +5,8 @@
     <h2>Member Dashboard 👤</h2>
 
     <ul>
-        <li><a href="/history">Riwayat Belanja</a></li>
-        <li><a href="/wallet/topup">Top-Up Saldo</a></li>
+        <li><a href="/history">Shopping History</a></li>
+        <li><a href="/wallet/topup">Top-Up Ballance</a></li>
     </ul>
 </div>
 @endsection

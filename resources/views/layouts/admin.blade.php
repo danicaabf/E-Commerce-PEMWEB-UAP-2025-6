@@ -14,9 +14,9 @@
             <a href="{{ route('admin.home') }}" class="font-bold text-xl">Admin Panel</a>
 
             <div class="space-x-6 flex items-center">
-                <a href="{{ route('admin.home') }}" class="hover:underline">HomePage</a>
-                <a href="{{ route('admin.verify.index') }}" class="hover:underline">Verifikasi Toko</a>
-                <a href="{{ route('admin.users.index') }}" class="hover:underline">Manajemen User & Store</a>
+                <a href="{{ route('admin.home') }}" class="hover:underline">Admin Dashboard</a>
+                <a href="{{ route('admin.stores.index') }}" class="hover:underline">Store Verification</a>
+                <a href="{{ route('admin.users.index') }}" class="hover:underline">Management User & Store</a>
 
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf

@@ -1,20 +1,20 @@
 <x-app-layout>
     <div class="p-6">
 
-        <h2 class="text-2xl font-bold mb-4">Wallet / Saldo</h2>
+        <h2 class="text-2xl font-bold mb-4">Wallet / Ballance</h2>
 
         <div class="p-4 bg-white shadow rounded mb-4">
-            <p class="text-lg">Saldo kamu:</p>
+            <p class="text-lg">Your Ballance:</p>
             <p class="text-3xl font-bold text-green-600">Rp {{ number_format($saldo,0,',','.') }}</p>
         </div>
 
-        <h3 class="text-xl font-bold mb-2">Riwayat Topup</h3>
+        <h3 class="text-xl font-bold mb-2">Topup History</h3>
 
         <table class="w-full bg-white shadow rounded">
             <tr class="border-b">
-                <th class="p-2">Kode</th>
-                <th class="p-2">Jumlah</th>
-                <th class="p-2">Metode</th>
+                <th class="p-2">Code</th>
+                <th class="p-2">Amount</th>
+                <th class="p-2">Method</th>
                 <th class="p-2">Status</th>
             </tr>
 

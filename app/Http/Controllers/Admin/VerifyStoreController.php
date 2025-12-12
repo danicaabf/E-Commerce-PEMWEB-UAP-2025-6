@@ -4,33 +4,30 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Store;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class VerifyStoreController extends Controller
 {
-    // tampilkan toko-toko yang belum diverifikasi
+    // Menampilkan semua toko
     public function index()
     {
-        // kirim variabel $stores supaya view kompatibel
-        $stores = Store::where('is_verified', false)->get();
-
-        return view('admin.verification', compact('stores'));
+        $stores = Store::with('user')->get();
+        return view('admin.verify-store', compact('stores'));
     }
 
-    // approve pakai route-model-binding
-    public function approve(Store $store): RedirectResponse
+    // Menerima verifikasi toko
+    public function verify(Store $store)
     {
-        $store->update(['is_verified' => true]);
+        $store->update(['is_verified' => 1]);
 
-        return back()->with('success', 'Toko berhasil diverifikasi.');
+        return redirect()->back()->with('success', 'Store berhasil diverifikasi.');
     }
 
-    // reject (hapus atau ubah status sesuai kebutuhan)
-    public function reject(Store $store): RedirectResponse
+    // Menolak verifikasi toko
+    public function reject(Store $store)
     {
-        // kalau mau tidak menghapus, bisa set status lain; contoh dihapus:
-        $store->delete();
+        $store->update(['is_verified' => 0]);
 
-        return back()->with('success', 'Toko ditolak dan dihapus.');
+        return redirect()->back()->with('error', 'Store ditolak.');
     }
 }

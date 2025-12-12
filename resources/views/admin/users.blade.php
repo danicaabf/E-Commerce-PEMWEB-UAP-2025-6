@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1 class="text-3xl font-bold mb-6">Manajemen User & Store</h1>
+<h1 class="text-3xl font-bold mb-6">Management User & Store</h1>
 
-<h2 class="text-xl font-semibold mb-2">Daftar User</h2>
+<h2 class="text-xl font-semibold mb-2">User List</h2>
 <table class="min-w-full bg-white border mb-8">
     <thead class="bg-gray-200">
         <tr>
-            <th class="p-3">Nama</th>
+            <th class="p-3">Name</th>
             <th class="p-3">Email</th>
             <th class="p-3">Role</th>
         </tr>
@@ -23,12 +23,12 @@
     </tbody>
 </table>
 
-<h2 class="text-xl font-semibold mb-2">Daftar Store</h2>
+<h2 class="text-xl font-semibold mb-2">Store List</h2>
 <table class="min-w-full bg-white border">
     <thead class="bg-gray-200">
         <tr>
-            <th class="p-3">Nama Toko</th>
-            <th class="p-3">Pemilik</th>
+            <th class="p-3">Store Name</th>
+            <th class="p-3">Owner</th>
             <th class="p-3">Status</th>
         </tr>
     </thead>
