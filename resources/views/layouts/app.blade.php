@@ -7,7 +7,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-100">
+<body class="flex flex-col min-h-screen bg-gray-100">
 
     {{-- Navbar --}}
     <nav class="bg-orange-600 text-white p-4">
@@ -36,18 +36,19 @@
                     {{-- SELLER --}}
                     @elseif(auth()->user()->role === 'seller')
                         <a href="{{ route('seller.dashboard') }}" class="hover:underline">Seller Dashboard</a>
-                        <a href="{{ route('store.index') }}" class="hover:underline">My Store</a>
+                        <a href="{{ route('store.my') }}">My Store</a>
+                        <a href="{{ route('seller.categories.index') }}" class="hover:underline">Category</a>
+                        <a href="{{ route('seller.products.index') }}" class="hover:underline">Product</a>
+                        <a href="{{ route('seller.orders.index') }}" class="hover:underline">Orders</a>
+                        <a href="{{ route('seller.balance.index') }}" class="hover:underline">Balance</a>
+                        <a href="{{ route('seller.withdrawals.index') }}" class="hover:underline">Withdrawals</a>
 
                     {{-- MEMBER --}}
                     @else
                         <a href="{{ route('dashboard') }}" class="hover:underline">Dashboard</a>
                         <a href="{{ route('store.index') }}" class="hover:underline">Store</a>
                         <a href="{{ route('categories.index') }}" class="hover:underline">Category</a>
-
-                        {{-- Topup Saldo --}}
                         <a href="{{ route('topup.index') }}" class="hover:underline">TopUp</a>
-
-                        {{-- Orders (existing) --}}
                         <a href="{{ route('orders.index') }}" class="hover:underline">Orders</a>
                     @endif
 
@@ -63,11 +64,13 @@
         </div>
     </nav>
 
-    <div class="container mx-auto p-6">
+    {{-- Content --}}
+    <main class="flex-1 container mx-auto p-6">
         @yield('content')
-    </div>
+    </main>
 
-    <footer class="bg-gray-200 text-gray-700 p-4 text-center mt-6">
+    {{-- Footer --}}
+    <footer class="bg-gray-200 text-gray-700 p-4 text-center">
         &copy; {{ date('Y') }} My E-Commerce Store. All rights reserved.
     </footer>
 

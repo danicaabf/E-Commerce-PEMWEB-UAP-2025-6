@@ -18,7 +18,7 @@ class RedirectRoleAfterLogin
             }
 
             if ($role === 'seller') {
-                return redirect('/seller'); // masuk ke dashboard seller
+                return redirect('/dashboard'); // member & seller
             }
 
             return redirect('/dashboard'); // member

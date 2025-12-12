@@ -27,4 +27,17 @@ class StoreController extends Controller
 
         return view('store.show', compact('store', 'products'));
     }
+
+    public function myStore() {
+        $user = auth()->user();
+
+        if (!$user->store) {
+            return redirect()->route('store.index')->with('error', 'Kamu belum punya toko.');
+        }
+
+        $store = $user->store;
+        $products = $store->products()->with('productImages')->get();
+
+        return view('store.my', compact('store', 'products'));
+    }
 }
