@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProductCategory;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -11,23 +12,30 @@ class CategoryController extends Controller
     {
         $categories = ProductCategory::all();
 
-        // Cek role user, pilih view sesuai role
-        if (auth()->user()->role === 'seller') {
+        // FIX TANPA MERAH
+        $user = Auth::user();
+        $role = $user ? $user->role : null;
+
+        if ($role === 'seller') {
             return view('seller.categories.index', compact('categories'));
         }
 
-        // Default member
         return view('categories.index', compact('categories'));
     }
 
     public function show($id)
     {
-        $category = ProductCategory::with('products.productImages', 'products.store')->findOrFail($id);
+        $category = ProductCategory::with('products.productImages', 'products.store')
+            ->findOrFail($id);
 
-        if (auth()->user()->role === 'seller') {
+        // FIX TANPA MERAH
+        $user = Auth::user();
+        $role = $user ? $user->role : null;
+
+        if ($role === 'seller') {
             return view('seller.categories.show', compact('category'));
         }
 
-        return view('category', compact('category')); // untuk member
+        return view('categories.show', compact('category'));
     }
 }

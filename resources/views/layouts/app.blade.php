@@ -47,7 +47,7 @@
                     @else
                         <a href="{{ route('dashboard') }}" class="hover:underline">Dashboard</a>
                         <a href="{{ route('store.index') }}" class="hover:underline">Store</a>
-                        <a href="{{ route('categories.index') }}" class="hover:underline">Category</a>
+                        <a href="{{ route('products.index') }}" class="hover:underline">Product</a>
                         <a href="{{ route('topup.index') }}" class="hover:underline">TopUp</a>
                         <a href="{{ route('orders.index') }}" class="hover:underline">Orders</a>
                     @endif

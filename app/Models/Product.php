@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-
     protected $fillable = [
         'store_id',
         'product_category_id',
@@ -27,9 +26,15 @@ class Product extends Model
     {
         return $this->belongsTo(Store::class);
     }
+
     public function productCategory()
     {
-        return $this->belongsTo(ProductCategory::class);
+        return $this->belongsTo(ProductCategory::class, 'product_category_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(ProductCategory::class, 'product_category_id');
     }
 
     public function productImages()
@@ -41,6 +46,7 @@ class Product extends Model
     {
         return $this->hasMany(TransactionDetail::class);
     }
+
     public function productReviews()
     {
         return $this->hasMany(ProductReview::class);
